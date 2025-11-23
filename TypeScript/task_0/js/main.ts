@@ -1,0 +1,51 @@
+interface Student {
+  firstName: string;
+  lastName: string;
+  age: number;
+  location: string;
+}
+
+const student1: Student = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 20,
+  location: "New York"
+};
+
+const student2: Student = {
+  firstName: "Jane",
+  lastName: "Smith",
+  age: 22,
+  location: "Los Angeles"
+};
+
+const studentsList: Array<Student> = [student1, student2];
+
+const body = document.querySelector("body");
+const table = document.createElement("table");
+const thead = document.createElement("thead");
+const tbody = document.createElement("tbody");
+
+const headerRow = document.createElement("tr");
+const th1 = document.createElement("th");
+th1.textContent = "First Name";
+const th2 = document.createElement("th");
+th2.textContent = "Location";
+headerRow.appendChild(th1);
+headerRow.appendChild(th2);
+thead.appendChild(headerRow);
+
+studentsList.forEach((student) => {
+  const row = document.createElement("tr");
+  const cell1 = document.createElement("td");
+  cell1.textContent = student.firstName;
+  const cell2 = document.createElement("td");
+  cell2.textContent = student.location;
+  row.appendChild(cell1);
+  row.appendChild(cell2);
+  tbody.appendChild(row);
+});
+
+table.appendChild(thead);
+table.appendChild(tbody);
+body?.appendChild(table);
